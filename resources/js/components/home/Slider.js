@@ -5,23 +5,9 @@ import pathHelper from '../../Helper/pathHelper';
 export default class Slider extends Component {
     constructor() {
         super();
-        this.state = {
-            settings: {},
-            mainImage: '',
-        }
     }
 
     componentWillMount() {
-        axios.get('/api/settings').then(response => {
-            this.setState({
-                settings: response.data,
-                mainImage: response.data['main-image'].value,
-
-            });
-            console.log(this.state.mainImage);
-        }).catch(error => {
-            console.log(error);
-        })
     }
 
     render() {
@@ -33,14 +19,14 @@ export default class Slider extends Component {
                         <div className="main_home">
                             <div className="col-sm-6">
                                 <div className="home-shadow text-right">
-                                    <img src={pathHelper.getSliderImage(this.state.mainImage)} alt=""/>
+                                    <img src={pathHelper.getSliderImage(this.props.mainImage)} alt=""/>
                                 </div>
                             </div>
                             <div className="col-sm-6 text-slider">
                                 <div className="home_text text-left">
-                                    <h4>kk</h4>
-                                    <h1 className="text-black">kk</h1>
-                                    <h1 className="text-black">kk</h1>
+                                    <h4>{this.props.SliderMainTitle}</h4>
+                                    <h1 className="text-black">{this.props.firstHashTag}</h1>
+                                    <h1 className="text-black">{this.props.secondHashTag}</h1>
                                 </div>
                                 <div className="home_btns m-top-30 text-center">
                                     <ul className="list-inline">
@@ -57,7 +43,7 @@ export default class Slider extends Component {
                                     </ul>
                                 </div>
                                 <div className="home_btns m-top-10 text-center">
-                                    <a href="{{route('homeIndex').'/#about'}}" className="btn btn-primary m-top-20">about
+                                    <a href="/#about" className="btn btn-primary m-top-20">about
                                         me</a>
                                 </div>
 
