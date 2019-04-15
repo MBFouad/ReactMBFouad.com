@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Projects;
+use App\Factories\ProjectFactory;
 
 class ProjectController extends Controller
 {
+    use ProjectFactory;
+
     /**
      * Display a listing of the resource.
      *
@@ -15,10 +18,11 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        if(isset($_GET['limit']))
-        $projects = Projects::take($_GET['limit'])->orderBy('sort')->get();
+        if (isset($_GET['limit']))
+            $projects = Projects::take($_GET['limit'])->orderBy('sort')->get();
         else
-        $projects = Projects::orderBy('sort')->get();
+            $projects = Projects::orderBy('sort')->get();
+        $projects = $this->handleProjectImage($projects);
         return response()->json($projects);
     }
 
@@ -35,7 +39,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -46,7 +50,7 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -57,7 +61,7 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -68,8 +72,8 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -80,7 +84,7 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

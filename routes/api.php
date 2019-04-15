@@ -22,3 +22,4 @@ Route::resource('paragraphs', 'Api\ParagraphsController');
 Route::resource('education', 'Api\EducationController');
 Route::resource('work-experiences', 'Api\WorkExperiencesController');
 Route::resource('project', 'Api\ProjectController');
+Route::resource('contact-us', 'Api\ContactUSController');

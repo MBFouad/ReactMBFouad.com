@@ -4,6 +4,7 @@
 const pathHelper = {
 
     getSliderImage: (img) => {
+        return img;
         img ='/uploads/slider/'+img;
         var http = new XMLHttpRequest();
 
@@ -13,6 +14,7 @@ const pathHelper = {
         return http.status == 404 ? '/images/shadow-img.png' : img;
     },
     getProjectImage: (img) => {
+        return img;
         img ='/uploads/project/'+img;
         var http = new XMLHttpRequest();
 

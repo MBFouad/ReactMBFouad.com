@@ -9,6 +9,7 @@ export default class Slider extends Component {
 
     componentWillMount() {
     }
+    
 
     render() {
 
@@ -19,7 +20,7 @@ export default class Slider extends Component {
                         <div className="main_home">
                             <div className="col-sm-6">
                                 <div className="home-shadow text-right">
-                                    <img src={pathHelper.getSliderImage(this.props.mainImage)} alt=""/>
+                                    <img src={this.props.mainImage} alt=""/>
                                 </div>
                             </div>
                             <div className="col-sm-6 text-slider">

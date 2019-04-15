@@ -14,9 +14,7 @@ class ProjectController extends Controller
 {
     public function index(Request $request)
     {
-        $paragraphs = Paragraphs::getParagraphs();
-        $projects = Projects::orderBy('sort')->get();
-        return view('project.index', compact('paragraphs','projects'));
+        return view('project.index');
 
     }
 }

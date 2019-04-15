@@ -28,7 +28,7 @@ export default class Portfolio extends Component {
     render() {
         this.projectsList = this.state.projects.map((item, key) =>
         <div key={item.id} className="col-md-4 col-sm-4 col-xs-4">
-        <img style={{width: '87px'}} src={pathHelper.getProjectImage(item.image)}  alt="{item.name}"/>
+        <img style={{width: '87px'}} src={item.image}  alt="{item.name}"/>
         </div>
     );
         return (

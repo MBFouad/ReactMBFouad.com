@@ -1,8 +1,8 @@
 <head>
     <meta charset="utf-8">
     <title>{{$settings['website-name']->value}}</title>
-    <meta name="description" content="MBFouad.com is portfolio website have my education background and my work experiences,also you can contact mohamed bahaa fouad ">
-    <meta name="keywords" content="MBFouad.com mohamed bahaa fouad MBFouad mbfouad.com mbfouad"/>
+    <meta name="description" content="MBFouad.com php developer && full stack is portfolio website have my education background and my work experiences,also you can contact mohamed bahaa fouad ">
+    <meta name="keywords" content="MBFouad.com mohamed bahaa fouad MBFouad mbfouad.com mbfouad php developer full stack"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">

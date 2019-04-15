@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\EducationHistory;
+use Validator;
+use Illuminate\Support\Facades\Mail;
+use App\Models\Contact;
+use App\Rules\ValidRecaptcha;
 
-class EducationController extends Controller
+class ContactUSController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +18,7 @@ class EducationController extends Controller
      */
     public function index()
     {
-        $educations=EducationHistory::all();
-        return response()->json($educations);
+        //
     }
 
     /**
@@ -26,7 +28,7 @@ class EducationController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -37,7 +39,33 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'email' => 'required',
+            'budget' => 'required',
+            'message' => 'required',
+        ];
+        if (env('APP_ENV') == 'production') {
+            $rules['g-recaptcha-response'] = ['required', new ValidRecaptcha()];
+        }
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->all(),400);
+        }
+
+        $contact = new Contact();
+        $contact->name = $request->get('name');
+        $contact->email = $request->get('email');
+        $contact->budget = $request->get('budget');
+        $contact->message = $request->get('message');
+        $contact->save();
+        Mail::send(['text' => 'partials.contact-us-email'], compact('contact'), function ($message) {
+            $message->to('contact@mbfouad.com', 'Contact Me')->subject
+            ('New Contact message');
+            $message->from('contact@mbfouad.com', 'Contact Me');
+        });
+        return response()->json('success');
+
     }
 
     /**
