@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import React, {Component} from 'react'; // eslint-disable-line
 import axios from 'axios'
 import NotificationMessage from  '../Template/NotificationMessage';
 export default class Contact extends Component {
@@ -25,7 +24,7 @@ export default class Contact extends Component {
     }
 
     handleInputChange(e) {
-        var contactForm = this.state.contactForm;
+        let contactForm = this.state.contactForm;
         contactForm[e.target.name] = e.target.value;
         this.setState({contactForm: contactForm});
     }
@@ -37,7 +36,7 @@ export default class Contact extends Component {
             budget: this.state.contactForm.budget,
             message: this.state.contactForm.message,
             'g-recaptcha-response': $('#g-recaptcha-response').val(),
-        }).then(response => {
+        }).then(() => {
             this.setState({success: ['email sent successfully']});
         }).catch(error => {
             this.setState({errors: error.response.data});

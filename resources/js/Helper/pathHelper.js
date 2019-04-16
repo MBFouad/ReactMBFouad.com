@@ -1,12 +1,10 @@
-/**
- * Created by mfouad on 04/04/19.
- */
+/*eslint-disable */
 const pathHelper = {
 
     getSliderImage: (img) => {
         return img;
         img ='/uploads/slider/'+img;
-        var http = new XMLHttpRequest();
+        let http = new XMLHttpRequest();
 
         http.open('HEAD', img, false);
         http.send();
@@ -16,7 +14,7 @@ const pathHelper = {
     getProjectImage: (img) => {
         return img;
         img ='/uploads/project/'+img;
-        var http = new XMLHttpRequest();
+        let http = new XMLHttpRequest();
 
         http.open('HEAD', img, false);
         http.send();
@@ -28,3 +26,4 @@ const pathHelper = {
 
 
 export  default pathHelper;
+/*eslint-enable */

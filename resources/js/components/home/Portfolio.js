@@ -1,7 +1,5 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+import React, {Component} from 'react'; // eslint-disable-line
 import axios from 'axios'
-import pathHelper from '../../Helper/pathHelper';
 
 export default class Portfolio extends Component {
     constructor() {

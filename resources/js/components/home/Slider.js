@@ -1,7 +1,5 @@
-import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios'
-import pathHelper from '../../Helper/pathHelper';
+import React, {Component} from 'react'; // eslint-disable-line
+
 export default class Slider extends Component {
     constructor() {
         super();

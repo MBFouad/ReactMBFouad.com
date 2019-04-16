@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import  Slider from './Slider';
-import  About from './About';
-import  Portfolio from './Portfolio';
-import  Contact from './Contact';
+import React, {Component} from 'react'; // eslint-disable-line
+import ReactDOM from 'react-dom'; // eslint-disable-line
+import Slider from './Slider';
+import About from './About';
+import Portfolio from './Portfolio';
+import Contact from './Contact';
+import axios from 'axios';
 
 
 export default class HomePage extends Component {
@@ -12,18 +13,19 @@ export default class HomePage extends Component {
         this.state = {
             settings: {},
             mainImage: '',
-            SliderMainTitle:'',
-            firstHashTag:'',
-            secondHashTag:'',
-            websiteName:'',
+            SliderMainTitle: '',
+            firstHashTag: '',
+            secondHashTag: '',
+            websiteName: '',
             paragraphs: {},
             aboutMeDescription: '',
-            portfolioDescription:'',
-            contactUSDescription:'',
-            contactUSAddress:'',
-            websiteLogo:'',
+            portfolioDescription: '',
+            contactUSDescription: '',
+            contactUSAddress: '',
+            websiteLogo: '',
         }
     }
+
     componentWillMount() {
         axios.get('/api/settings').then(response => {
             this.setState({
@@ -53,19 +55,20 @@ export default class HomePage extends Component {
             console.log(error);
         })
     }
+
     render() {
 
         return (
             <div>
-                <Slider 
-                mainImage={this.state.mainImage} 
-                SliderMainTitle={this.state.SliderMainTitle}
-                firstHashTag={this.state.firstHashTag}
-                secondHashTag={this.state.secondHashTag}
+                <Slider
+                    mainImage={this.state.mainImage}
+                    SliderMainTitle={this.state.SliderMainTitle}
+                    firstHashTag={this.state.firstHashTag}
+                    secondHashTag={this.state.secondHashTag}
                 />
-                <About  
-                websiteName={this.state.websiteName}  
-                aboutMeDescription={this.state.aboutMeDescription}
+                <About
+                    websiteName={this.state.websiteName}
+                    aboutMeDescription={this.state.aboutMeDescription}
                 />
                 <Portfolio portfolioDescription={this.state.portfolioDescription}/>
                 <Contact

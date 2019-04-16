@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'; // eslint-disable-line
 import ReactDOM from 'react-dom';
 
 export default class Example extends Component {

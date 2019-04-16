@@ -1,8 +1,4 @@
-/**
- * Created by mfouad on 15/04/19.
- */
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react'; // eslint-disable-line
 
 export default class InnerProject extends Component {
 render(){

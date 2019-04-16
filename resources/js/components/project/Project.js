@@ -1,6 +1,8 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'; // eslint-disable-line
 import ReactDOM from 'react-dom';
 import  InnerProject from './InnerProject';
+import axios from 'axios';
+
 
 export default class Project extends Component {
     constructor() {
